@@ -1,4 +1,4 @@
-#ifndef POLYGON
+п»ї#ifndef POLYGON
 #define POLYGON
 
 #include <vector>
@@ -106,7 +106,7 @@ public:
     
     Fraction _tail_area() const;
     
-    int _dir_of_side() const;		//0 - с обоих сторон(вершина хвоста), -1 - слева, 1 - справа.
+    int _dir_of_side() const;		//0 - СЃ РѕР±РѕРёС… СЃС‚РѕСЂРѕРЅ(РІРµСЂС€РёРЅР° С…РІРѕСЃС‚Р°), -1 - СЃР»РµРІР°, 1 - СЃРїСЂР°РІР°.
     
     int _rank() const{ return rank;}
 
@@ -142,7 +142,7 @@ private:
 	Fraction area;
 	Fraction triangle_area;
 	Fraction tail_area;
-	int dir_of_side;		//0 - с обоих сторон(вершина хвоста), -1 - слева, 1 - справа.
+	int dir_of_side;		//0 - СЃ РѕР±РѕРёС… СЃС‚РѕСЂРѕРЅ(РІРµСЂС€РёРЅР° С…РІРѕСЃС‚Р°), -1 - СЃР»РµРІР°, 1 - СЃРїСЂР°РІР°.
     int rank;
     std::list<Geometry::Diag*> next;
 

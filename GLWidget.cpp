@@ -1,4 +1,4 @@
-#include <QMouseEvent>
+п»ї#include <QMouseEvent>
 #include <QFont>
 #include <QTextStream>
 
@@ -6,7 +6,7 @@
 #include "subsidiary.h"
 #include "Polygon.h"
 
-#define LOAD_FILE "tes.txt"
+#define LOAD_FILE "test14.txt"
 
 bool need_sides = false;
 bool need_diagonals = false;
@@ -24,8 +24,8 @@ Geometry::Point worldPosition;
 Geometry::Point mousePosition;
 Geometry::my_Polygon polygon;
 
-std::list<Geometry::Diag*> diagonals;  //получаем из Polygon.cpp две противоположные диагонали со всей структурой.
-std::list<Geometry::Diag*> diags;       //сюда помещаем все диагонали при обходе
+std::list<Geometry::Diag*> diagonals;  //РїРѕР»СѓС‡Р°РµРј РёР· Polygon.cpp РґРІРµ РїСЂРѕС‚РёРІРѕРїРѕР»РѕР¶РЅС‹Рµ РґРёР°РіРѕРЅР°Р»Рё СЃРѕ РІСЃРµР№ СЃС‚СЂСѓРєС‚СѓСЂРѕР№.
+std::list<Geometry::Diag*> diags;       //СЃСЋРґР° РїРѕРјРµС‰Р°РµРј РІСЃРµ РґРёР°РіРѕРЅР°Р»Рё РїСЂРё РѕР±С…РѕРґРµ
 
 int max_rank = 0;
 
@@ -80,7 +80,7 @@ GLWidget::GLWidget(QWidget *parent): QGLWidget(parent)
     QTextStream(&movement) << "Arrows: movement";
     QTextStream(&zoom) << "+\\-: zoom";
     QTextStream(&sExit) << "Esc: exit";
-    QTextStream(&load) << "L: load data from test.txt";
+    QTextStream(&load) << "L: load data from " << LOAD_FILE;
     QTextStream(&area1) << "A: print areas after division";
     QTextStream(&zro) << "0: draw only contour";
     QTextStream(&one) << "1: draw diagonals and division";
@@ -118,7 +118,7 @@ void GLWidget::resizeGL(int w, int h)
 void paint_sides()
 {
     glColor4f(0,1,1,1);
-    glBegin(GL_LINE_LOOP);  //рисуем контур
+    glBegin(GL_LINE_LOOP);  //СЂРёСЃСѓРµРј РєРѕРЅС‚СѓСЂ
     std::list<Geometry::Point> tmp = polygon._points();
     std::list<Geometry::Point>::iterator r = tmp.begin();
     while(r != tmp.end())
