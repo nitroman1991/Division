@@ -1,4 +1,4 @@
-#include "subsidiary.h"
+﻿#include "subsidiary.h"
 #include <math.h>
 
 int64_t _abs(int64_t a)

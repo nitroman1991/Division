@@ -1,4 +1,4 @@
-#ifndef SUBSIDIARY
+﻿#ifndef SUBSIDIARY
 #define SUBSIDIARY
 
 #include <stdint.h>
