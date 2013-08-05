@@ -1,5 +1,4 @@
 ﻿#include <QtGui/QApplication>
-#include <QtOpenGL/QGLWidget>
 #include <QDesktopWidget>
 
 #include "GLWidget.h"

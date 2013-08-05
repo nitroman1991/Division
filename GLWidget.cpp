@@ -6,7 +6,7 @@
 #include "subsidiary.h"
 #include "Polygon.h"
 
-#define LOAD_FILE "test14.txt"
+#define LOAD_FILE "../test14.txt"
 
 bool need_sides = false;
 bool need_diagonals = false;

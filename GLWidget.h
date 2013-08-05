@@ -1,7 +1,8 @@
 ﻿#ifndef GLWIDGET_H
 #define GLWIDGET_H
 
-#include <QtOpenGL\QGLWidget>
+
+#include <QGLWidget>
 
 
 
@@ -20,8 +21,7 @@ void write_text();
 
 class GLWidget : public QGLWidget {
 
-    Q_OBJECT
-
+    
 public:
     GLWidget(QWidget *parent = NULL);
 
