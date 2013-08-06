@@ -6,7 +6,9 @@
 #include <vector>
 #include <list>
 
-extern int64_t max_width;
+typedef long long int int64;
+
+extern int64 max_width;
 extern std::list<Geometry::Diag*> diagonals;
 extern std::list<Geometry::Point> res;
 std::vector<Geometry::Diag> true_diagonals;
@@ -406,9 +408,9 @@ void my_Polygon::save(const char* filename)
 void my_Polygon::load_2d(char const *filename)
 {
     num_points = 0;
-    int64_t k = 1;
-    int64_t a = 0;
-    int64_t b = 0;
+    int64 k = 1;
+    int64 a = 0;
+    int64 b = 0;
     Point tmp_point;
     std::ifstream ifile;
         
@@ -483,15 +485,15 @@ std::list<Point> tail_partition(Diag *start, Diag *end, Fraction K, int side_or_
 	
 	std::list<Point> result;
 	Diag *tmp = start;
-	int64_t upper = 0;
-	int64_t lower = 0;
+    int64 upper = 0;
+    int64 lower = 0;
 
 		
 		
-	upper = (int64_t) sqrt((long double)K.getU());			//находим коэффициенты, где должны лежать рассекающие точки на диагоналях.
-    lower = (int64_t)sqrt((long double)K.getL()) + 1;       //можно было бы проще, но так получаем точные, рациональные значения вместо приближенных
+    upper = (int64) sqrt((long double)K.getU());			//находим коэффициенты, где должны лежать рассекающие точки на диагоналях.
+    lower = (int64)sqrt((long double)K.getL()) + 1;       //можно было бы проще, но так получаем точные, рациональные значения вместо приближенных
 	K_1.upload(upper, lower);
-	int64_t temp = 1;
+    int64 temp = 1;
 	while(K >= K_1 * K_1)
 	{
 		K_1.upload(K_1.getU() + temp, K_1.getL() + temp);
@@ -503,8 +505,8 @@ std::list<Point> tail_partition(Diag *start, Diag *end, Fraction K, int side_or_
 	
 
 
-	upper = (int64_t) sqrt((long double)(1 - K).getU());
-	lower = (int64_t) sqrt((long double)(1 - K).getL()) + 1;
+    upper = (int64) sqrt((long double)(1 - K).getU());
+    lower = (int64) sqrt((long double)(1 - K).getL()) + 1;
 	K_2.upload(upper, lower);
 	temp = 1;
 	while(1 - K >= K_2 * K_2)

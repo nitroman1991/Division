@@ -1,12 +1,14 @@
 ﻿#ifndef SUBSIDIARY
 #define SUBSIDIARY
 
-#include <stdint.h>
 #include "GLWidget.h"
 
-int64_t gcd(int64_t a, int64_t b);
+typedef long long int int64;
 
-int64_t _abs(int64_t a);
+int64 gcd(int64 a, int64 b);
+
+int64 _abs(int64 a);
+
 
 long double __abs(long double a);
 
@@ -18,15 +20,15 @@ public:
 
     Fraction();
 
-    Fraction(int64_t upper, int64_t lower);
+    Fraction(int64 upper, int64 lower);
 
-    Fraction(const int64_t &i);
+    Fraction(const int64 &i);
 
     Fraction(const Fraction &f);
 	
 	Fraction(double f, int digits);
 
-	Fraction upload(int64_t upper, int64_t lower);
+    Fraction upload(int64 upper, int64 lower);
 
     Fraction smart();
 
@@ -63,16 +65,16 @@ public:
 	friend bool operator != (Fraction a, int b);
 	friend struct Point;
     
-    int64_t getU() const;
+    int64 getU() const;
 
-    int64_t getL() const;
+    int64 getL() const;
 
     int sign() const;
 
 private:
 
-    int64_t u;
-    int64_t l;
+    int64 u;
+    int64 l;
 	double lg_u;
 	double lg_l;
 	bool is_sharp;
@@ -85,9 +87,9 @@ public:
 
     Point();
 
-    Point(int64_t const &x0, int64_t const &y0);
+    Point(int64 const &x0, int64 const &y0);
 
-    Point(int64_t const &x0, int64_t const &y0, int64_t const &s0);
+    Point(int64 const &x0, int64 const &y0, int64 const &s0);
     
     Point(const Point &p);
     
@@ -95,9 +97,9 @@ public:
 
     Point upload(Fraction const &X, Fraction const &Y);
     
-    Point upload(int64_t const &x0, int64_t const &y0);
+    Point upload(int64 const &x0, int64 const &y0);
     
-    Point upload(int64_t const &x0, int64_t const &y0, int64_t const &s0);
+    Point upload(int64 const &x0, int64 const &y0, int64 const &s0);
     
     void smart();
 
@@ -117,11 +119,11 @@ public:
 
     Fraction getY ();
 
-    int64_t &X ();
+    int64 &X ();
 
-    int64_t &Y ();
+    int64 &Y ();
 
-    int64_t &S ();
+    int64 &S ();
     
     double x_num();
     
@@ -135,9 +137,9 @@ public:
     
 private:
     
-    int64_t x;
-    int64_t y;
-    int64_t s;
+    int64 x;
+    int64 y;
+    int64 s;
 	bool is_sharp;
 
 };

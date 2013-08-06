@@ -8,6 +8,8 @@
 
 #define LOAD_FILE "../test14.txt"
 
+typedef long long int int64;
+
 bool need_sides = false;
 bool need_diagonals = false;
 bool need_division = false;
@@ -15,7 +17,7 @@ bool is_divided = false;
 bool is_already_loaded = false;
 
 extern int num_points;
-int64_t max_width = 50;
+int64 max_width = 50;
 int window_width = 0;
 int window_height = 0;
 int world_width = 50;
@@ -492,7 +494,7 @@ void GLWidget::keyPressEvent(QKeyEvent* event)
             double a = (answer.front()).numerical_area();
             double b = (answer.back()).numerical_area();
 
-            QTextStream(&area2) << "S_first = " << (int64_t)a << ", S_second = " << (int64_t)b;
+            QTextStream(&area2) << "S_first = " << (int64)a << ", S_second = " << (int64)b;
 
             need_sides = false;
             need_diagonals = true;

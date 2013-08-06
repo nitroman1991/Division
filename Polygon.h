@@ -7,6 +7,8 @@
 #include "subsidiary.h"
 #include "GLWidget.h"
 
+typedef long long int int64;
+
 class GLWidget;
 
 namespace Geometry {

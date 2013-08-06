@@ -1,7 +1,9 @@
 ﻿#include "subsidiary.h"
 #include <math.h>
 
-int64_t _abs(int64_t a)
+typedef long long int int64;
+
+int64 _abs(int64 a)
 {
     if(a < 0)
         a = -a;
@@ -15,7 +17,7 @@ long double __abs(long double a)
     return a;
 }
 
-int64_t gcd(int64_t a, int64_t b)
+int64 gcd(int64 a, int64 b)
 {
     if(b == 0)
         return a;
@@ -64,12 +66,12 @@ Point::Point() : x(0), y(0), s(1), is_sharp(true)
 
 }
 
-Point::Point(int64_t const &x0, int64_t const &y0) : x(x0), y(y0), s(1), is_sharp(true)
+Point::Point(int64 const &x0, int64 const &y0) : x(x0), y(y0), s(1), is_sharp(true)
 {
 
 }
 
-Point::Point(int64_t const &x0, int64_t const &y0, int64_t const &s0) : x(x0), y(y0), s(s0), is_sharp(true)
+Point::Point(int64 const &x0, int64 const &y0, int64 const &s0) : x(x0), y(y0), s(s0), is_sharp(true)
 {
 
 }
@@ -81,7 +83,7 @@ Point::Point(const Point &p) : x(p.x), y(p.y), s(p.s), is_sharp(p.is_sharp)
 
 Point::Point(Fraction X, Fraction Y)
 {
-    int64_t tmp = gcd(X.getL(), Y.getL());
+    int64 tmp = gcd(X.getL(), Y.getL());
 
 		x = X.getU() * (Y.getL() / tmp);
 		y = Y.getU() * (X.getL() / tmp);
@@ -92,7 +94,7 @@ Point::Point(Fraction X, Fraction Y)
 	smart();
 }
 
-Point Point::upload(int64_t const &x0, int64_t const &y0)
+Point Point::upload(int64 const &x0, int64 const &y0)
 {
     x = x0;
     y = y0;
@@ -101,7 +103,7 @@ Point Point::upload(int64_t const &x0, int64_t const &y0)
     return *this;
 }
 
-Point Point::upload(int64_t const &x0, int64_t const &y0, int64_t const &s0)
+Point Point::upload(int64 const &x0, int64 const &y0, int64 const &s0)
 {
     x = x0;
     y = y0;
@@ -113,7 +115,7 @@ Point Point::upload(int64_t const &x0, int64_t const &y0, int64_t const &s0)
 
 Point Point::upload(Fraction const &X, Fraction const &Y)
 {
-    int64_t tmp = gcd(X.getL(), Y.getL());
+    int64 tmp = gcd(X.getL(), Y.getL());
 	double log_tmp = log10((double)_abs(tmp));
 	
 	if(X.lg_l + Y.lg_u > 19 + log_tmp || X.lg_u + Y.lg_l > 19 + log_tmp || X.lg_l + Y.lg_l > 19 + log_tmp)
@@ -135,8 +137,8 @@ Point Point::upload(Fraction const &X, Fraction const &Y)
 			s *= 10;
 		}
 
-		x = (int64_t)tmp1;
-		y = (int64_t)tmp2;
+        x = (int64)tmp1;
+        y = (int64)tmp2;
 		is_sharp = false;
 	}
 	else
@@ -153,7 +155,7 @@ Point Point::upload(Fraction const &X, Fraction const &Y)
 
 void Point::smart()
 {
-    int64_t local_gcd = gcd(_abs(s), gcd(_abs(x), _abs(y)));
+    int64 local_gcd = gcd(_abs(s), gcd(_abs(x), _abs(y)));
     x /= local_gcd;
     y /= local_gcd;
     s /= local_gcd;
@@ -211,17 +213,17 @@ bool Point::sharpness() const
 	return is_sharp;
 }
 
-int64_t &Point::X ()
+int64 &Point::X ()
 {
     return x;
 }
 
-int64_t &Point::Y ()
+int64 &Point::Y ()
 {
     return y;
 }
 
-int64_t &Point::S ()
+int64 &Point::S ()
 {
     return s;
 }
@@ -249,7 +251,7 @@ Fraction::Fraction() : u(0), l(1), lg_u(0), lg_l(0), is_sharp(true)
 
 }
 
-Fraction::Fraction(int64_t upper, int64_t lower) : u(upper), lg_u(log10((double)_abs(u))), is_sharp(true)
+Fraction::Fraction(int64 upper, int64 lower) : u(upper), lg_u(log10((double)_abs(u))), is_sharp(true)
 {
     if(lower != 0)
 	{
@@ -260,7 +262,7 @@ Fraction::Fraction(int64_t upper, int64_t lower) : u(upper), lg_u(log10((double)
         throw (char *) "Exception: divide on zero in fraction number.";
 }
 
-Fraction Fraction::upload(int64_t upper, int64_t lower)
+Fraction Fraction::upload(int64 upper, int64 lower)
 {
 	u = upper;
 	l = lower;
@@ -270,7 +272,7 @@ Fraction Fraction::upload(int64_t upper, int64_t lower)
 	return *this;
 }
 
-Fraction::Fraction(const int64_t &i) : u(i), l(1), is_sharp(true)
+Fraction::Fraction(const int64 &i) : u(i), l(1), is_sharp(true)
 {
 	lg_u = log10((double)_abs(u));
 	lg_l = 0;
@@ -308,7 +310,7 @@ Fraction::Fraction(double f, int digits)
 
 Fraction Fraction::smart()
 {
-    int64_t local_gcd = gcd(_abs(l), _abs(u));
+    int64 local_gcd = gcd(_abs(l), _abs(u));
 	double tmp = log10((double)local_gcd);
     l /= local_gcd;
     u /= local_gcd;
@@ -338,7 +340,7 @@ Fraction Fraction::to_decimal()
 		l *= 10;
 	}
 		
-	u = (int64_t)tmp;
+    u = (int64)tmp;
 	lg_u = log10(__abs((double)u));
 	lg_l = counter;
 	is_sharp = false;
@@ -397,7 +399,7 @@ Fraction operator + (Fraction const &a, Fraction const &b)
 			r.l *= 10;
 		}
 		
-		r.u = (int64_t)tmp;
+        r.u = (int64)tmp;
 		r.lg_u = log10(__abs((double)r.u));
 		r.lg_l = counter;
 		r.is_sharp = false;
@@ -436,7 +438,7 @@ Fraction operator - (Fraction const &a, Fraction const &b)
 			r.l *= 10;
 		}
 		
-		r.u = (int64_t)tmp;
+        r.u = (int64)tmp;
 		r.lg_u = log10(__abs((double)r.u));
 		r.lg_l = counter;
 		r.is_sharp = false;
@@ -474,7 +476,7 @@ Fraction operator * (Fraction const &a, Fraction const &b)
 			r.l *= 10;
 		}
 		
-		r.u = (int64_t)tmp;
+        r.u = (int64)tmp;
 		r.lg_u = log10(__abs((double)r.u));
 		r.lg_l = counter;
 		r.is_sharp = false;
@@ -514,7 +516,7 @@ Fraction operator / (Fraction const &a, Fraction const &b)
 			r.l *= 10;
 		}
 		
-		r.u = (int64_t)tmp;
+        r.u = (int64)tmp;
 		r.lg_u = log10(__abs((double)r.u));
 		r.lg_l = counter;
 		r.is_sharp = false;
@@ -639,12 +641,12 @@ bool operator != (Fraction a, int b)
 	return !(a == b);
 }
 
-int64_t Fraction::getU() const
+int64 Fraction::getU() const
 {
     return u;
 }
 
-int64_t Fraction::getL() const
+int64 Fraction::getL() const
 {
     return l;
 }

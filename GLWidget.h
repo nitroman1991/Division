@@ -4,7 +4,7 @@
 
 #include <QGLWidget>
 
-
+typedef long long int int64;
 
 void clear_all();
 
